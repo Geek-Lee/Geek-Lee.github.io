@@ -1,0 +1,140 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ page.title }}</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="{{ site.baseurl }}/images/bitbug_favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/styles/reset.min.css">
+        <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/styles/others.css">
+        <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
+        <!--[if lt ie 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <script data-config="scripts/config" data-main="scripts/main" src="{{ site.baseurl }}/sea/sea.js"></script>
+    </head>
+    <body>
+        <!--[if gte ie 8]><!-->
+        <!--导航开始-->
+        <nav class="site-nav">
+            <button class="site-nav-logo button-transition"><span  title="Site Navigation">W</span></button><!--导航按钮-->
+            <div class="site-nav-container">
+                <ul class="site-list-item">
+                    <li><a href="#" class="list-item-btn" id="home">Home</a></li>
+                    <li><a href="#collection" class="list-item-btn" id="collection">Collection</a></li>
+                </ul>
+            </div><!--导航内容容器-->
+        </nav><!--导航结尾-->
+        <!--覆盖层-->
+        <div class="site-nav-overlay"></div><!--覆盖层-->
+        <!--主页面容器-->
+        <div class="container container-transition">
+            <!--主页面-->
+            <div class="surface">
+                <!--主要内容-->
+                <div class="screen-content">
+                    <!--焦点图-->
+                    <div class="image-home-header-bleed">
+                        <div class="images-src" style="background-image: url({{ site.baseurl }}/images/header-bg.jpeg)"></div>
+                        <div class="images-src images-src-blur" style="background-image: url({{ site.baseurl }}/images/header-bg-shadow.jpeg)"></div> 
+                    </div><!--焦点图-->
+                    <!--滚动页面-->
+                    <div class="srolling-region">
+                        <header class="blog-header">
+                            <h1 class="blog-title">WNLee's Blog</h1>
+                            <p>I'm WeiNanLee,This my personal blog!</p>
+                        </header>
+                        <nav class="page-nav">
+                            <ul>
+                                <li><a href="#blogs" id="blogsID" class="hover">Blogs List</a></li>
+                                <li><a href="#books" id="booksID">Books List</a></li>
+                                <li><a href="#about" id="aboutID">About Me</a></li>
+                            </ul>
+                        </nav>
+                        <div class="background-white">
+                            <div class="article-container">
+                                {{ content }}
+                            </div>
+                            <div class="book-container">
+                                <ul class="book-list">
+                                    <li class="book-item">
+                                        <div>
+                                            <div class="book-img-container"><img src="http://img3.douban.com/lpic/s4538004.jpg" /></div>
+                                            <div class="info-container">
+                                                <h4 class="bookname"><label>Name:</label>《高性能Javascript》</h4>
+                                                <p class="bookauthor"><label>Author:</label>Nicholas C. Zakas</p>
+                                                <p class="bookabout"><label>About:</label>如果你使用JavaScript构建交互丰富的Web应用，那么JavaScript代码可能是造成你的Web应用速度变慢的主要原因。《高性能JavaScript》揭示的技术和策略能帮助你在开发过程中消除性能瓶颈。</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="book-item">
+                                        <div>
+                                            <div class="book-img-container"><img src="images/book.png" /></div>
+                                            <div class="info-container">
+                                                <h4 class="bookname"><label>Name:</label>《高性能Javascript》</h4>
+                                                <p class="bookauthor"><label>Author:</label>Nicholas C. Zakas</p>
+                                                <p class="bookabout"><label>About:</label>如果你使用JavaScript构建交互丰富的Web应用，那么JavaScript代码可能是造成你的Web应用速度变慢的主要原因。《高性能JavaScript》揭示的技术和策略能帮助你在开发过程中消除性能瓶颈。</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="book-item">
+                                        <div>
+                                            <div class="book-img-container"><img src="images/book.png" /></div>
+                                            <div class="info-container">
+                                                <h4 class="bookname"><label>Name:</label>《高性能Javascript》</h4>
+                                                <p class="bookauthor"><label>Author:</label>Nicholas C. Zakas</p>
+                                                <p class="bookabout"><label>About:</label>如果你使用JavaScript构建交互丰富的Web应用，那么JavaScript代码可能是造成你的Web应用速度变慢的主要原因。《高性能JavaScript》揭示的技术和策略能帮助你在开发过程中消除性能瓶颈。</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="aboutme-container">
+                                <div class="photo-container">
+                                    <img src="images/myphoto.jpg" alt="" class="myphoto" />
+                                </div>   
+                                <div class="my-info">
+                                    <h3>WeiNan Lee</h3>
+                                    <p>小前端，小自恋，伪文青。关注摄影，关注设计，爱前端，爱NodeJs，讨厌 ie。爱父母，爱朋友，爱生活，爱分享。</p>
+                                    <p>It is really my honor to have this opportunity for an interview, I hope i can make a good performance today. I'm confident that I can succeed. Now i will introduce myself briefly </p>
+                                    <h4>Please contact me by:</h4>
+                                    <p>QQ: 745076968 /  </p>
+                                    <p>Tel: 18825193978 /</p>
+                                    <p>Email: GeekLee202@gmail.com /</p>
+                                </div>  
+                            </div>
+                            <footer class="footer"><a href="GeekLee2020@gmail.com" target="_blank">Link Me</a><a target="_blank" href="http://www.cnblogs.com/geek-lee/">CnBlogs</a><a target="_blank" href="http://weibo.com/17aiba">WeiBo</a></footer>
+                        </div>
+                    </div><!--滚动页面-->
+                </div><!--主要内容-->
+            </div><!--主页面-->
+        </div><!--主页面容器-->
+        <script type='text/javascript'>
+            seajs.config({
+                paths: {
+                    'scripts': '{{ site.baseurl }}/scripts'
+                },
+                alias: {
+                    'jquery': 'scripts/jquery-2.0.3.js',
+                    'underscore': 'scripts/underscore-min.js',
+                    'backbone': 'scripts/backbone-min.js'
+                },
+                charset: 'utf-8'
+            });
+        </script>
+        <script type='text/javascript' src="scripts/main.js"></script>
+        <!--><![endif]-->
+        <!--[if lt ie 8]>
+            <div id="update-tip-layer">
+                <div id="update-tip">
+                    <a href="http://www.google.cn/chrome" title="Chrome" id="chrome"></a>
+                    <a href="http://www.apple.com.cn/safari/" title="Safari" id="safari"> </a>
+                    <a href="http://www.firefox.com.cn/download/" title="Firefox" id="firefox"> </a>
+                    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home" title="IE 10" id="ie"></a>
+                </div>
+            </div>
+        <![endif]-->
+    </body>
+</html>
