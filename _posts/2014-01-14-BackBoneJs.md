@@ -30,7 +30,7 @@ excerpt: '这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这
 >BackBone 类库是用于实现前端 MVC（Model 模型、View 视图、Controller 控制器）的一个库，我们常说的 MVC 大多是整个 Web 开发过程的 MVC，而前端实现 MVC 还是比较困难的，所以他的出现很多程度就解决了这个问题。先看张图感受下BackBone是如何实现前端 MVC 的
 
 
-![MCV](images/BackBone-MVC.png)
+![MCV](/images/BackBone-MVC.png)
 
 上图是BackBone各模块之间的协作图，前端 MVC 也是这样实现的
 
