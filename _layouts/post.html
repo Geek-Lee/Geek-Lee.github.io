@@ -97,7 +97,25 @@
                 charset: 'utf-8'
             });
         </script>
-        <script type='text/javascript' src="{{ site.baseurl }}/scripts/main.js"></script>
+        <script type='text/javascript'>
+        seajs.use("{{ site.baseurl }}/scripts/Drawer.js", function(Drawer) {
+            $(function() {   
+
+                var d = new Drawer;
+
+            });
+        });
+
+        seajs.use("{{ site.baseurl }}/scripts/Router.js", function(Workspace) {
+            $(function() {   
+
+                var w = new Workspace;
+
+                Backbone.history.start();
+
+            });
+        });
+        </script>
         <!--><![endif]-->
         <!--[if lt ie 8]>
             <div id="update-tip-layer">
