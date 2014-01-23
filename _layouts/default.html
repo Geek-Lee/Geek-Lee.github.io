@@ -14,6 +14,9 @@
         <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
         <!--[if lt ie 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         <script data-config="scripts/config" data-main="scripts/main" src="{{ site.baseurl }}/sea/sea.js"></script>
+        <script src="{{ site.baseurl }}/scripts/jquery-2.0.3.js"></script>
+        <script src="{{ site.baseurl }}/scripts/underscore-min.js"></script>
+        <script src="{{ site.baseurl }}/scripts/backbone-min.js"></script>
     </head>
     <body>
         <!--[if gte ie 8]><!-->
@@ -124,7 +127,25 @@
                 charset: 'utf-8'
             });
         </script>
-        <script type='text/javascript' src="scripts/main.js"></script>
+        <script type='text/javascript'>
+        seajs.use("{{ site.baseurl }}/scripts/Drawer.js", function(Drawer) {
+            $(function() {   
+
+                var d = new Drawer;
+
+            });
+        });
+
+        seajs.use("{{ site.baseurl }}/scripts/Router.js", function(Workspace) {
+            $(function() {   
+
+                var w = new Workspace;
+
+                Backbone.history.start();
+
+            });
+        });
+        </script>
         <!--><![endif]-->
         <!--[if lt ie 8]>
             <div id="update-tip-layer">
