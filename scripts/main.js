@@ -1,4 +1,4 @@
-seajs.use("../scripts/Drawer.js", function(Drawer) {
+seajs.use("./scripts/Drawer.js", function(Drawer) {
     $(function() {   
 
         var d = new Drawer;
@@ -6,7 +6,7 @@ seajs.use("../scripts/Drawer.js", function(Drawer) {
     });
 });
 
-seajs.use("../scripts/Router.js", function(Workspace) {
+seajs.use("./scripts/Router.js", function(Workspace) {
     $(function() {   
 
         var w = new Workspace;
