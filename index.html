@@ -1,0 +1,16 @@
+---
+layout: default
+title: WNLee's Blog
+---
+
+<ul class="article-list">
+    {% for post in site.posts %}
+        <li class="article-item">
+            <div>
+                <h2><a class="article-title" title="test" href="{{ post.url }}">{{ post.title }}</a></h2>
+                <p class="article-intro">{{ post.excerpt }}</p>
+                <p class="post-date">{{ post.date | date_to_string }}</p>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
