@@ -5,7 +5,7 @@ category: javascript
 excerpt: '这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这个库挺好用的。'
 ---
 
-## Backbone.Js 入门篇
+【Backbone.Js 入门篇】
 
 ##摘要
 
