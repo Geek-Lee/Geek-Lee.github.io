@@ -1,7 +1,7 @@
-define(function(require, exports, module) {
-    var jq = require('jquery');
-    var underscore = require('underscore');
-    var backbone = require('backbone');
+define('module/Router', function(require, exports, module) {
+
+    var $ = require('$');
+    var Backbone = require('backbone');
 
     var Workspace = Backbone.Router.extend({
         routes: {
@@ -40,5 +40,8 @@ define(function(require, exports, module) {
         }
     });
 
-    return  Workspace;
+    exports.run = function() {
+        var w = new Workspace;
+        Backbone.history.start();
+    };
 });

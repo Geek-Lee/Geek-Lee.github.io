@@ -1,7 +1,7 @@
-define(function(require, exports, module) {
-    var jq = require('jquery');
-    var underscore = require('underscore');
-    var backbone = require('backbone');
+define('module/Drawer', function(require, exports, module) {
+
+    var $ = require('$');
+    var Backbone = require('backbone');
 
     var Drawer = Backbone.View.extend({
         el: 'body',
@@ -37,4 +37,5 @@ define(function(require, exports, module) {
     });
 
     return  Drawer;
+
 });

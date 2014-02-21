@@ -14,10 +14,6 @@
         <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/styles/others.css">
         <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
         <!--[if lt ie 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-        <script data-config="scripts/config" data-main="scripts/main" src="{{ site.baseurl }}/sea/sea.js"></script>
-        <script src="{{ site.baseurl }}/scripts/jquery-2.0.3.js"></script>
-        <script src="{{ site.baseurl }}/scripts/underscore-min.js"></script>
-        <script src="{{ site.baseurl }}/scripts/backbone-min.js"></script>
     </head>
     <body>
         <!--[if gte ie 8]><!-->
@@ -84,38 +80,18 @@
                 </div><!--主要内容-->
             </div><!--主页面-->
         </div><!--主页面容器-->
+        <script type='text/javascript' src="{{ site.baseurl }}/scripts/base/sea.js"></script>
         <script type='text/javascript'>
             seajs.config({
-                paths: {
-                    'scripts': '{{ site.baseurl }}/scripts'
-                },
+                base: '{{ site.baseurl }}/scripts/',
                 alias: {
-                    'jquery': 'scripts/jquery-2.0.3.js',
-                    'underscore': 'scripts/underscore-min.js',
-                    'backbone': 'scripts/backbone-min.js'
-                },
-                charset: 'utf-8'
+                    'underscore': 'base/underscore',
+                    '$': 'base/jquery',
+                    'backbone': 'base/backbone'
+                }
             });
         </script>
-        <script type='text/javascript'>
-        seajs.use("{{ site.baseurl }}/scripts/Drawer.js", function(Drawer) {
-            $(function() {   
-
-                var d = new Drawer;
-
-            });
-        });
-
-        seajs.use("{{ site.baseurl }}/scripts/Router.js", function(Workspace) {
-            $(function() {   
-
-                var w = new Workspace;
-
-                Backbone.history.start();
-
-            });
-        });
-        </script>
+        <script type='text/javascript' src="{{ site.baseurl }}/scripts/main/app.js"></script>
         <!--><![endif]-->
         <!--[if lt ie 8]>
             <div id="update-tip-layer">

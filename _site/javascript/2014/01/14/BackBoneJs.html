@@ -1,0 +1,553 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Backbone.Js 入门篇</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="/images/bitbug_favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="/styles/reset.min.css">
+        <link type="text/css" rel="stylesheet" href="/styles/markdown.css">
+        <link type="text/css" rel="stylesheet" href="/styles/others.css">
+        <link type="text/css" rel="stylesheet" href="/styles/main.css">
+        <!--[if lt ie 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+    <body>
+        <!--[if gte ie 8]><!-->
+        <!--导航开始-->
+        <nav class="site-nav">
+            <button class="site-nav-logo button-transition"><span  title="Site Navigation">W</span></button><!--导航按钮-->
+            <div class="site-nav-container">
+                <ul class="site-list-item">
+                    <li><a href="#" class="list-item-btn" id="home">Home</a></li>
+                    <li><a href="#collection" class="list-item-btn" id="collection">Collection</a></li>
+                </ul>
+            </div><!--导航内容容器-->
+        </nav><!--导航结尾-->
+        <!--覆盖层-->
+        <div class="site-nav-overlay"></div><!--覆盖层-->
+        <!--主页面容器-->
+        <div class="container container-transition">
+            <!--主页面-->
+            <div class="surface">
+                <!--主要内容-->
+                <div class="screen-content">
+                    <!--焦点图-->
+                    <div class="image-home-header-bleed">
+                        <div class="images-src" style="background-image: url(/images/header-bg.jpeg)"></div>
+                        <div class="images-src images-src-blur" style="background-image: url(/images/header-bg-shadow.jpeg)"></div> 
+                    </div><!--焦点图-->
+                    <!--滚动页面-->
+                    <div class="srolling-region">
+                        <header class="blog-header">
+                            <h1 class="blog-title">WNLee's Blog</h1>
+                            <p>I'm WeiNanLee,This my personal blog!</p>
+                        </header>
+                        <nav class="page-nav">
+                            <ul>
+                                <li><a href="/index.html#blogs" id="blogsID" class="hover">Blogs List</a></li>
+                                <li><a href="/index.html#books" id="booksID">Books List</a></li>
+                                <li><a href="/index.html#about" id="aboutID">About Me</a></li>
+                            </ul>
+                        </nav>
+                        <div class="background-white">
+                          <div class="article">
+                            <h2>Backbone.Js 入门篇</h2>
+                            <p class="post-date">14 Jan 2014</p>
+                            <h2 id="backbonejs_">Backbone.Js 入门篇</h2>
+
+<h2 id="">摘要</h2>
+
+<blockquote>
+<p>这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这个库挺好用的。</p>
+</blockquote>
+
+<h2 id="_2">目录</h2>
+
+<ul>
+<li>前言</li>
+
+<li>直接创建对象(new)</li>
+
+<li>给构造函数添加实例方法和静态方法(extend)</li>
+
+<li>继承操作(extend)</li>
+
+<li>自定义事件(.on/.listenTo)</li>
+
+<li>数据域服务器(sync,url,save(),fetch())</li>
+
+<li>路由与历史管理</li>
+
+<li>事件委托</li>
+
+<li>前端模板</li>
+
+<li>其他</li>
+
+<li>ToDo例子</li>
+</ul>
+
+<h2 id="_3">前言</h2>
+
+<blockquote>
+<p>BackBone 类库是用于实现前端 MVC（Model 模型、View 视图、Controller 控制器）的一个库，我们常说的 MVC 大多是整个 Web 开发过程的 MVC，而前端实现 MVC 还是比较困难的，所以他的出现很多程度就解决了这个问题。先看张图感受下BackBone是如何实现前端 MVC 的</p>
+</blockquote>
+
+<p><img src="images/BackBone-MVC.png" alt="MCV" /></p>
+
+<p>上图是BackBone各模块之间的协作图，前端 MVC 也是这样实现的</p>
+
+<ul>
+<li>Model 数据模型；</li>
+
+<li>Collection 模型集合器，是 Model 模块的集合；</li>
+
+<li>View 是视图可以看成是 HTML 模板，前端实现 MVC 分离比较困难，所以视图包含了控制器；</li>
+
+<li>Event 事件驱动方法，javascript 出色的事件机制，属于控制器；</li>
+
+<li>Router 对页面跳转进行管理，主要负责数据与视图，Hash值得管理吧弥补了JQ的不足</li>
+
+<li>History 是页面跳转历史的管理，取决于Router；</li>
+
+<li>Sync 默认 ajax 实现与服务器同步，从服务器获取数据</li>
+
+<li>C 模块前端分离比较困难所以其中各模块都包含部分控制器 Controller;</li>
+</ul>
+
+<h2 id="_4">直接创建对象</h2>
+
+<blockquote>
+<p>BackBone 用到的是OOP思想，他的运用依赖于实例化对象和类的继承。</p>
+</blockquote>
+
+<pre><code>//通过 new 来实例化构造函数，之后可以使用他的方法
+var model = new Backbone.Model();       // 创建数据对象
+var models = new Backbone.Collection(); // 创建集合对象
+var view = new Backbone.View();         // 创建视图对象
+
+model.set(&#39;name&#39;,&#39;Hello&#39;);              // 调用 set 方法
+alert( model.get(&#39;name&#39;) );             // 调用 get 方法
+
+// collection 集合的使用
+var model_1 = new Backbone.Model({&#39;name&#39;:&#39;model_1&#39;});
+var model_2 = new Backbone.Model({&#39;name&#39;:&#39;model_2&#39;});
+// 调用 add 方法向 models 添加内容
+models.add(model_1);
+models.add(model_2);
+alert( JSON.stringify(models) );</code></pre>
+
+<h2 id="_5">给构造函数添加实例方法和静态方法</h2>
+
+<blockquote>
+<p>实例方法：需要实例化构造函数才可以使用的方法，this指向构造函数；</p>
+</blockquote>
+
+<blockquote>
+<p>静态方法：不用实例化构造函数，加上构造函数命名空间便可以使用；</p>
+</blockquote>
+
+<pre><code>// 通过 extend 扩展方法
+var M = Backbone.Model.extend({
+	md_1: function() {
+		alert(&#39;Prototype&#39;);   // 实例方法
+	}
+},{
+	md_2: function() {
+		alert(&#39;Static&#39;);   // 静态方法
+	}
+});
+
+var md = new M;
+md.md_1();  //  需要实例化才可以调用 md_1 方法
+M.md_2();  // 可以直接调用的静态方法</code></pre>
+
+<h2 id="_6">继承操作</h2>
+
+<blockquote>
+<p>继承大家都不陌生吧，这里就直接看下如何实现的就好吧</p>
+</blockquote>
+
+<pre><code>// extend 方法不止可以用来扩展方法
+// 还可以用来实现继承操作
+// extend 接收对象下若有 defaults 属性则为扩展类添加默认数据模型
+// 有 initialize 则初始化构造函数
+var M = Backbone.Model.extend({ // 实例方法有效
+	defaults: {  // 默认值设置
+		&#39;name&#39;:&#39;hello&#39;
+	},
+	initialize: function() { // 初始化构造函数
+		this.on(&#39;change&#39;, function() {
+			alert(&#39;Text change!&#39;);
+		});
+	}
+});
+var mod = new M;
+alert( mod.get(&#39;name&#39;) );  // 测试默认值
+mod.set({&#39;name&#39;:&#39;hi&#39;});  // 测试 initialize
+
+
+// 继承操作,继承操作主要用于实例方法，同时也继承了Model本身的方法
+var FatherM = Backbone.Model.extend({
+	defaults:{
+		&#39;name&#39;:&#39;hello&#39;
+	},
+	md: function() {
+		alert( &quot;Father Class&#39;s &quot;+this.get(&#39;name&#39;) );
+	}
+}，{
+	md_static:function() {
+		alert(&#39;Static Method&#39;);
+	}
+});
+
+var ChildM = FatherM.extend();  // 继承操作
+ChildM.md_static();  // 静态方法可以继承
+model = new ChildM;  // 实例化子类
+model.md();  // 子类继承的方法</code></pre>
+
+<h2 id="_7">自定义事件</h2>
+
+<blockquote>
+<p>自定义事件可以理解为事件绑定</p>
+</blockquote>
+
+<pre><code>// 使用 .on() 绑定 change 事件
+var M = Backbone.Model.extend({
+	defaults: {
+		&#39;name&#39;: &#39;Hello&#39;
+	},
+	initialize: function() {  // 初始化构造函数
+		this.on(&#39;change&#39;, function(){ // change 事件是当数据内容改变就会触发的事件
+			alert(&#39;Text Changed&#39;); 
+		});
+	}
+});
+var model = new M;
+model.set({&#39;name&#39;:&#39;Hi&#39;});
+
+// change 事件可以指定修改特定属性发生事件
+var M = Backbone.Model.extend({
+	defaults: {
+		&#39;name&#39;:&#39;Hello&#39;,
+		&#39;age&#39;: 23
+	},
+	initialize: function() {
+		this.listenTo(&#39;change:name&#39;,function(){
+			alert(&#39;Text Changed&#39;);
+		});
+	}
+});
+var model = new M;
+model.set({&#39;name&#39;:&#39;hi&#39;});  // 触发 change 事件
+model.set({&#39;age&#39;: 24});	 // 不触发 change 事件
+
+// 使用 .listenTo() 绑定事件
+// 数据模型 与 视图绑定
+$(function() {
+	var M = Backbone.Model.extend({
+		defaults: {
+			&#39;name&#39;:&#39;Hello&#39;
+		}
+	});
+	var V = Backbone.View.extend({
+		initialize: function() {
+			// listenTo 可以指定监听对象，这里将监听对象改为了 model
+			this.listenTo(this.model,&#39;change&#39;,this.show);
+		},
+		show: function(model) {
+			$(&#39;body&#39;).append(&#39;&lt;div&gt;&#39;+model.get(&#39;name&#39;)+&#39;&lt;/div&gt;&#39;);
+		}
+	});
+	var m = new M;
+	var v = new V({model:m});
+	m.set({&#39;name&#39;:&#39;hi&#39;});
+});</code></pre>
+
+<h2 id="_8">数据与服务器</h2>
+
+<blockquote>
+<p>数据模型和后台服务器的交互，主要方法有 sync，fetch</p>
+</blockquote>
+
+<p>sync 对应的 method 有 <code>create、read、update、delete</code> 有如下一个对应关系：</p>
+
+<ul>
+<li>create – post <code>/collection</code></li>
+
+<li>read – get <code>/collection[/id]</code></li>
+
+<li>update – put <code>/collection/id</code></li>
+
+<li>delete – delete <code>/collection/id</code></li>
+</ul>
+
+<p>代码示例：</p>
+
+<pre><code>// sync 是一个方法，指定同步结束后执行的回调
+// model 的属性 url 指定后台链接，进行通信
+// 当模型的数据发生改变便会同步到后台
+Backbone.sync = function(method,model) {
+	alert( method+&#39;: &#39;+JSON.stringify(model) );
+	model.id = 1;
+};
+var M = Backbone.Model.extend({
+	defaults: {
+		&#39;name&#39;:&#39;hello&#39;
+	},
+	url: &#39;/users&#39;  // 数据模型M作用于 /users
+});
+var m = new M;
+m.save();  // 保存数据
+m.save({&#39;name&#39;:&#39;hi&#39;});  // 保存数据
+
+// 集合的同步
+Backbone.sync = function(method,model) {
+	alert( method+&#39;: &#39;+JSON.stringify(model) );
+};
+var C = new Backbone.Collection.extend({
+	defaults: {
+		&#39;name&#39;:&#39;hello
+	},
+	initialize: function() {
+		this.on(&#39;reset&#39;, function() {
+			alert(&#39;Collection Reset&#39;);
+		});
+	},
+	url: &#39;/users&#39;
+});
+var coll = new C;
+coll.fetch();  // 调用 fetch 方法，对集合中的数据进行保存</code></pre>
+
+<h2 id="_9">路由与历史管理</h2>
+
+<blockquote>
+<p>路由、历史管理处理，异步页面没有跳转页需要用到链接的 hash 来管理，这一模块就是对 hash 值的管理</p>
+</blockquote>
+
+<pre><code>// 实例化一个 Router 对象
+// routes 属性是一个 JSON，hash 值对应回调
+// 回调有两个参数
+// 需要调用 Backbone.history.start() 才会生效
+// 可以用于移动端
+var workspace = Backbone.Router.extend({
+	routes: {
+		&#39;help&#39;: help,  // #help
+		&#39;search/:query&#39;: search,  // #search/query
+		&#39;search/:query/p:page&#39;: search  // #search/query/page
+	},	
+	help: function() {
+		alert(&#39;#help&#39;);
+	},
+	search: function(query,page) {
+		alert(&#39;#search/:&#39;+query+&#39;/p:&#39;+page);
+	}
+});
+var w = new workspace;
+Backbone.history.start();</code></pre>
+
+<h2 id="_10">事件委托</h2>
+
+<pre><code>// HTML:
+&lt;body&gt;
+	&lt;button&gt;Click Me!&lt;/button&gt;
+	&lt;a&gt;Mouseover Me!&lt;/a&gt;
+&lt;/body&gt;
+
+// javascript:
+$(function() {
+	var V = Backbone.View.extend({
+		el: $(&#39;body&#39;),  // 事件委托给 body
+		events: {
+			&#39;click button&#39;: &#39;ck&#39;,
+			&#39;mouseover a&#39;: &#39;mv&#39;
+		},
+		ck: function() {
+			alert(&#39;Click Button!&#39;);
+		},
+		mv: function() {
+			alert(&#39;Mouseover a&#39;);
+		}
+	});
+	var v = new V;
+});
+
+// javascript：
+// 这部分是官网的源码
+// 这部分不属于委托
+var DocumentRow = Backbone.View.extend({
+	tagName: &quot;li&quot;,  // tagName 接收一个 events 操作的标签
+	className: &quot;document-row&quot;,  // className 接收一个类名
+	events: {
+		&quot;click .icon&quot;:          &quot;open&quot;,
+		&quot;click .button.edit&quot;:   &quot;openEditDialog&quot;,
+		&quot;click .button.delete&quot;: &quot;destroy&quot;
+	},
+	initialize: function() {
+		this.listenTo(this.model, &quot;change&quot;, this.render);
+	},
+	render: function() {
+		...
+	}
+});</code></pre>
+
+<h2 id="_11">前端模板</h2>
+
+<blockquote>
+<p>Backbone 支持前端模板，实现 HTML 和 javascript 的分离</p>
+</blockquote>
+
+<pre><code>// 模板
+&lt;body&gt;
+	// type 应为 text/template
+	// 需要 id 标识
+	&lt;script type=&quot;text/template&quot; id=&quot;template&quot;&gt;
+	&lt;%= value %&gt; // 直接替换 value
+	&lt;% javascript %&gt;  // 嵌入待执行的 javascript 代码
+	&lt;%- value %&gt; // 对 value 中的特殊字符进行转义
+	&lt;/script&gt;
+&lt;/body&gt;
+
+// 可以通过 _.templateSettings 修改替换格式
+// 例：
+// _.templateSettings = {
+//		interpolate: /\{\{(.+?)\}\}/g
+// };
+// var template = _.template(&quot;Hello !&quot;);
+// template({name: &quot;Mustache&quot;});
+// =&gt; &quot;Hello Mustache!&quot;
+
+// 示例： template 1
+&lt;script type=&quot;text/template&quot; id=&quot;template&quot;&gt;
+	&lt;div&gt;&lt;%= name %&gt;&lt;/div&gt;
+&lt;/script&gt;
+
+// 示例： template 2
+&lt;script type=&quot;text/template&quot; id=&quot;template&quot;&gt;
+	&lt;% for(var i=0;i&lt;5;i++) { %&gt;
+		&lt;div&gt;&lt;%= name %&gt;&lt;/div&gt;
+	&lt;% } %&gt;
+&lt;/script&gt;
+
+$(function() {
+	var M = Backbone.Model.extend({
+		defaults: {
+			&quot;name&quot;: &quot;Hello&quot;
+		}
+	});
+	var V = Backbone.View.extend({
+		initialize: function() {
+			this.listenTo(this.model,&#39;change&#39;,this.show);
+		},
+		show: function(model) {
+			// 模板调用，插入数据
+			$(&#39;body&#39;).append(this.template(this.model.toJSON()));
+		},
+		// 获取模板
+		template: _.template($(&#39;#template&#39;).html())
+	});
+	var m = new M;
+	var v = new V({model:m});
+	m.set({&quot;name&quot;:&quot;hi&quot;});
+});</code></pre>
+
+<h2 id="_12">其他</h2>
+
+<blockquote>
+<p>Backbone 依赖于 Underscore.js，与 jQuery 可以协作使用，部分浏览器不兼容 JSON 需要用到 json2.js。</p>
+</blockquote>
+
+<h2 id="todo_">ToDo 例子</h2>
+
+<blockquote>
+<p>现在就用 ToDo 这个例子来看下如何使用 backbone</p>
+</blockquote>
+
+<p>ToDo 需要实现的功能有</p>
+
+<ul>
+<li>添加 ToDo 内容；</li>
+
+<li>显示未完成 ToDo 项个数；</li>
+
+<li>标记已完成的 ToDo 项；</li>
+
+<li>删除未做 ToDo 项；</li>
+
+<li>全选标记为已完成 ToDo 项；</li>
+
+<li>删除已经完成的 ToDo 项；</li>
+
+<li>双击修改；</li>
+</ul>
+
+<p>下面是 ToDo 定义的 HTML 模板</p>
+
+<pre><code>// 添加 ToDo 项的模板
+&lt;script type=&quot;text/template&quot; id=&quot;item-template&quot;&gt;
+	&lt;div class=&quot;view&quot;&gt;
+		&lt;input class=&quot;toggle&quot; type=&quot;checkbox&quot; &lt;%= done ? &#39;checked=&quot;checked&quot;&#39; : &#39;&#39; %&gt; /&gt;
+		&lt;label&gt;&lt;%- title %&gt;&lt;/label&gt;
+		&lt;a class=&quot;destroy&quot;&gt;&lt;/a&gt;
+	&lt;/div&gt;
+	&lt;input class=&quot;edit&quot; type=&quot;text&quot; value=&quot;&lt;%- title %&gt;&quot; /&gt;
+&lt;/script&gt;
+
+// 显示未完成项部分的 HTML 模板
+&lt;script type=&quot;text/template&quot; id=&quot;stats-template&quot;&gt;
+	&lt;% if (done) { %&gt;
+  		&lt;a id=&quot;clear-completed&quot;&gt;Clear &lt;%= done %&gt; completed &lt;%= done == 1 ? &#39;item&#39; : &#39;items&#39; %&gt;&lt;/a&gt;
+	&lt;% } %&gt;
+	&lt;div class=&quot;todo-count&quot;&gt;&lt;b&gt;&lt;%= remaining %&gt;&lt;/b&gt; &lt;%= remaining == 1 ? &#39;item&#39; : &#39;items&#39; %&gt; left&lt;/div&gt;
+&lt;/script&gt;</code></pre>
+                            <!-- Duoshuo Comment BEGIN -->
+                            <div class="ds-thread"></div>
+                            <script type="text/javascript">
+                            var duoshuoQuery = {short_name:"wnlee"};
+                            (function() {
+                                var ds = document.createElement('script');
+                                ds.type = 'text/javascript';
+                                ds.async = true;
+                                ds.src = 'http://static.duoshuo.com/embed.js';
+                                ds.charset = 'UTF-8';
+                                (document.getElementsByTagName('head')[0] 
+                                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+                            })();
+                            </script>
+                          </div>
+                          <!-- Duoshuo Comment END -->
+                          <footer class="footer"><a href="GeekLee2020@gmail.com" target="_blank">Link Me</a><a target="_blank" href="http://www.cnblogs.com/geek-lee/">CnBlogs</a><a target="_blank" href="http://weibo.com/17aiba">WeiBo</a></footer>
+                        </div>
+                    </div><!--滚动页面-->
+                </div><!--主要内容-->
+            </div><!--主页面-->
+        </div><!--主页面容器-->
+        <script type='text/javascript' src="/scripts/base/sea.js"></script>
+        <script type='text/javascript'>
+            seajs.config({
+                base: '/scripts/',
+                alias: {
+                    'underscore': 'base/underscore',
+                    '$': 'base/jquery',
+                    'backbone': 'base/backbone'
+                }
+            });
+        </script>
+        <script type='text/javascript' src="/scripts/main/app.js"></script>
+        <!--><![endif]-->
+        <!--[if lt ie 8]>
+            <div id="update-tip-layer">
+                <div id="update-tip">
+                    <a href="http://www.google.cn/chrome" title="Chrome" id="chrome"></a>
+                    <a href="http://www.apple.com.cn/safari/" title="Safari" id="safari"> </a>
+                    <a href="http://www.firefox.com.cn/download/" title="Firefox" id="firefox"> </a>
+                    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home" title="IE 10" id="ie"></a>
+                </div>
+            </div>
+        <![endif]-->
+    </body>
+</html>

@@ -5,13 +5,13 @@ category: javascript
 excerpt: '这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这个库挺好用的。'
 ---
 
-### Backbone.Js 入门篇
+## Backbone.Js 入门篇
 
-【摘要】
+##摘要
 
 >这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这个库挺好用的。
 
-【目录】
+##目录
 
 - 前言
 - 直接创建对象(new)
@@ -25,12 +25,12 @@ excerpt: '这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这
 - 其他
 - ToDo例子
 
-【前言】
+##前言
 
 >BackBone 类库是用于实现前端 MVC（Model 模型、View 视图、Controller 控制器）的一个库，我们常说的 MVC 大多是整个 Web 开发过程的 MVC，而前端实现 MVC 还是比较困难的，所以他的出现很多程度就解决了这个问题。先看张图感受下BackBone是如何实现前端 MVC 的
 
 
-![MCV](/images/BackBone-MVC.png)
+![MCV](images/BackBone-MVC.png)
 
 上图是BackBone各模块之间的协作图，前端 MVC 也是这样实现的
 
@@ -43,7 +43,7 @@ excerpt: '这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这
 - Sync 默认 ajax 实现与服务器同步，从服务器获取数据
 - C 模块前端分离比较困难所以其中各模块都包含部分控制器 Controller;
 
-【直接创建对象】
+##直接创建对象
 
 >BackBone 用到的是OOP思想，他的运用依赖于实例化对象和类的继承。
 
@@ -64,7 +64,7 @@ excerpt: '这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这
 	alert( JSON.stringify(models) );
 
 
-【给构造函数添加实例方法和静态方法】
+##给构造函数添加实例方法和静态方法
 
 >实例方法：需要实例化构造函数才可以使用的方法，this指向构造函数；
 
@@ -85,7 +85,7 @@ excerpt: '这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这
 	md.md_1();  //  需要实例化才可以调用 md_1 方法
 	M.md_2();  // 可以直接调用的静态方法
 
-【继承操作】
+##继承操作
 
 >继承大家都不陌生吧，这里就直接看下如何实现的就好吧
 
@@ -127,7 +127,7 @@ excerpt: '这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这
 	model = new ChildM;  // 实例化子类
 	model.md();  // 子类继承的方法
 
-【自定义事件】
+##自定义事件
 
 >自定义事件可以理解为事件绑定
 
@@ -183,7 +183,7 @@ excerpt: '这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这
 		m.set({'name':'hi'});
 	});
 
-【数据与服务器】
+##数据与服务器
 
 >数据模型和后台服务器的交互，主要方法有 sync，fetch
 
@@ -231,7 +231,7 @@ sync 对应的 method 有 `create、read、update、delete` 有如下一个对�
 	var coll = new C;
 	coll.fetch();  // 调用 fetch 方法，对集合中的数据进行保存
 
-【路由与历史管理】
+##路由与历史管理
 
 >路由、历史管理处理，异步页面没有跳转页需要用到链接的 hash 来管理，这一模块就是对 hash 值的管理
 
@@ -256,7 +256,7 @@ sync 对应的 method 有 `create、read、update、delete` 有如下一个对�
 	var w = new workspace;
 	Backbone.history.start();
 
-【事件委托】
+##事件委托
 
 	// HTML:
 	<body>
@@ -301,7 +301,7 @@ sync 对应的 method 有 `create、read、update、delete` 有如下一个对�
 		}
 	});
 
-【前端模板】
+##前端模板
 
 >Backbone 支持前端模板，实现 HTML 和 javascript 的分离
 
@@ -359,11 +359,11 @@ sync 对应的 method 有 `create、read、update、delete` 有如下一个对�
 		m.set({"name":"hi"});
 	});
 
-【其他】
+##其他
 
 >Backbone 依赖于  Underscore.js，与 jQuery 可以协作使用，部分浏览器不兼容 JSON 需要用到 json2.js。
 
-【ToDo 例子】
+##ToDo 例子
 
 >现在就用 ToDo 这个例子来看下如何使用 backbone
 

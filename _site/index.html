@@ -6,12 +6,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ page.title }}</title>
+        <title>WNLee's Blog</title>
         <meta name="viewport" content="width=device-width">
-        <link rel="shortcut icon" href="{{ site.baseurl }}/images/bitbug_favicon.ico" />
-        <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/styles/reset.min.css">
-        <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/styles/others.css">
-        <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
+        <link rel="shortcut icon" href="/images/bitbug_favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="/styles/reset.min.css">
+        <link type="text/css" rel="stylesheet" href="/styles/others.css">
+        <link type="text/css" rel="stylesheet" href="/styles/main.css">
         <!--[if lt ie 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     </head>
     <body>
@@ -36,8 +36,8 @@
                 <div class="screen-content">
                     <!--焦点图-->
                     <div class="image-home-header-bleed">
-                        <div class="images-src" style="background-image: url({{ site.baseurl }}/images/header-bg.jpeg)"></div>
-                        <div class="images-src images-src-blur" style="background-image: url({{ site.baseurl }}/images/header-bg-shadow.jpeg)"></div> 
+                        <div class="images-src" style="background-image: url(/images/header-bg.jpeg)"></div>
+                        <div class="images-src images-src-blur" style="background-image: url(/images/header-bg-shadow.jpeg)"></div> 
                     </div><!--焦点图-->
                     <!--滚动页面-->
                     <div class="srolling-region">
@@ -54,7 +54,17 @@
                         </nav>
                         <div class="background-white">
                             <div class="article-container">
-                                {{ content }}
+                                <ul class="article-list">
+    
+        <li class="article-item">
+            <div>
+                <h2><a class="article-title" title="test" href="/javascript/2014/01/14/BackBoneJs.html">Backbone.Js 入门篇</a></h2>
+                <p class="article-intro">这是 Backbone.Js 入门的学习笔记，大概看了一下觉得这个库挺好用的。</p>
+                <p class="post-date">14 Jan 2014</p>
+            </div>
+        </li>
+    
+</ul>
                             </div>
                             <div class="book-container">
                                 <ul class="book-list">
@@ -137,10 +147,10 @@
                 </div><!--主要内容-->
             </div><!--主页面-->
         </div><!--主页面容器-->
-        <script type='text/javascript' src="{{ site.baseurl }}/scripts/base/sea.js"></script>
+        <script type='text/javascript' src="/scripts/base/sea.js"></script>
         <script type='text/javascript'>
             seajs.config({
-                base: '{{ site.baseurl }}/scripts/',
+                base: '/scripts/',
                 alias: {
                     'underscore': 'base/underscore',
                     '$': 'base/jquery',
@@ -148,7 +158,7 @@
                 }
             });
         </script>
-        <script type='text/javascript' src="{{ site.baseurl }}/scripts/main/app.js"></script>
+        <script type='text/javascript' src="/scripts/main/app.js"></script>
         <script type="text/template" id="books-template">
             <li >
                 <div class="book-item">
