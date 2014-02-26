@@ -89,6 +89,39 @@ body,
   text-align: center;
   color: #ffffff;
 }
+.surface .screen-content .srolling-region header .link-github-con {
+  display: block;
+  margin: 16px 0;
+  text-align: center;
+  visibility: visible;
+}
+.surface .screen-content .srolling-region header .link-github-con a {
+  position: relative;
+  display: inline-block;
+  padding: 0 14px;
+  height: 32px;
+  line-height: 31px;
+  vertical-align: middle;
+  outline: 0;
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-border-radius: 999em;
+  -moz-border-radius: 999em;
+  border-radius: 999em;
+  -webkit-transition: 0.1s background-color, 0.1s border-color, 0.1s color;
+  -moz-transition: 0.1s background-color, 0.1s border-color, 0.1s color;
+  -ms-transition: 0.1s background-color, 0.1s border-color, 0.1s color;
+  -o-transition: 0.1s background-color, 0.1s border-color, 0.1s color;
+  transition: 0.1s background-color, 0.1s border-color, 0.1s color;
+}
+.surface .screen-content .srolling-region header .link-github-con a:hover {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
 .surface .screen-content .srolling-region .article-container {
   display: block;
   margin: 0 auto;
