@@ -59,63 +59,6 @@
                             </div>
                             <div class="book-container">
                                 <ul class="book-list">
-                                    <li >
-                                        <div class="book-item">
-                                            <div class="book-img-container">
-                                                <img src="images/s4538004.jpg" />
-                                            </div>
-                                            <div class="info-container">
-                                                <p><span>书名:</span> 
-                                                    <a href='http://book.douban.com/subject/25768396/'>
-                                                        深入浅出Node.js
-                                                    </a>
-                                                </p>
-                                                <p><span>作者:</span> 田永强</p>
-                                                <p><span>出版日期:</span> 2013-12</p>
-                                                <p><span>出版社:</span> 人民邮电出版社</p>
-                                                <p><span>页数:</span> 348 </p>
-                                                <p><span>ISBN:</span> 9787115335500</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li >
-                                        <div class="book-item">
-                                            <div class="book-img-container">
-                                                <img src="images/s4538004.jpg" />
-                                            </div>
-                                            <div class="info-container">
-                                                <p><span>书名:</span> 
-                                                    <a href='http://book.douban.com/subject/25768396/'>
-                                                        深入浅出Node.js
-                                                    </a>
-                                                </p>
-                                                <p><span>作者:</span> 田永强</p>
-                                                <p><span>出版日期:</span> 2013-12</p>
-                                                <p><span>出版社:</span> 人民邮电出版社</p>
-                                                <p><span>页数:</span> 348 </p>
-                                                <p><span>ISBN:</span> 9787115335500</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li >
-                                        <div class="book-item">
-                                            <div class="book-img-container">
-                                                <img src="images/diveinto-nodejs.jpg" />
-                                            </div>
-                                            <div class="info-container">
-                                                <p><span>书名:</span> 
-                                                    <a href='http://book.douban.com/subject/25768396/'>
-                                                        深入浅出Node.js
-                                                    </a>
-                                                </p>
-                                                <p><span>作者:</span> 田永强</p>
-                                                <p><span>出版日期:</span> 2013-12</p>
-                                                <p><span>出版社:</span> 人民邮电出版社</p>
-                                                <p><span>页数:</span> 348 </p>
-                                                <p><span>ISBN:</span> 9787115335500</p>
-                                            </div>
-                                        </div>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="aboutme-container">
@@ -154,19 +97,19 @@
             <li >
                 <div class="book-item">
                     <div class="book-img-container">
-                        <img src="<%= src %>" />
+                        <img src=<%= image %> />
                     </div>
                     <div class="info-container">
                         <p><span>书名:</span> 
-                            <a href='<%= url %>'>
-                                <%= name %>
+                            <a href=<%= url %>>
+                                <%= title %>
                             </a>
                         </p>
                         <p><span>作者:</span> <%= author %></p>
-                        <p><span>出版日期:</span> <%= date %></p>
-                        <p><span>出版社:</span> <%= press %></p>
+                        <p><span>出版年份:</span> <%= pubdate %></p>
+                        <p><span>出版社:</span> <%= publisher %></p>
                         <p><span>页数:</span> <%= pages %></p>
-                        <p><span>ISBN:</span> <%= isbn %></p>
+                        <p><span>ISBN:</span> <%= isbn13 %></p>
                     </div>
                 </div>
             </li>

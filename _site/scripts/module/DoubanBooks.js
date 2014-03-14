@@ -1,7 +1,7 @@
 define('module/DoubanBooks', function(require, exports, module) {
 
     var _ = {};
-    _.APIkey = '069c2c1c916caa0713d48455b445fe15';
+    _.APIkey = '07d1768ce7b723b6177463a6b7256b22';
     
     function DoubanBooks() {}
 
@@ -11,11 +11,6 @@ define('module/DoubanBooks', function(require, exports, module) {
     // 这里把 GetDoubanData挂到全局变量上面,
     // 获取数据后再把数据添加到 '_' 对象里。 
     // 这样处理不太好，希望可以找到 SeaJs 内部提供的方法解决。
-    window.GetDoubanData = function (data) {
-
-        _[data.id] = data;
-
-    };
 
     DoubanBooks.ReqBooksInfo = function(bookID, callback) {
 
@@ -31,6 +26,12 @@ define('module/DoubanBooks', function(require, exports, module) {
         document.body.appendChild(script);
 
     };
+
+    DoubanBooks.SetBooksData = function(data) {
+
+        _[data.id] = data;
+
+    } 
    
     DoubanBooks.ShowBooksInfo = function(bookID) {
 

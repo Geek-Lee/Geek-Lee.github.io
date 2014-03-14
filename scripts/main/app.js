@@ -5,7 +5,7 @@ seajs.use(["module/Drawer.js", "module/Router.js", "module/DoubanBooks.js"],
     
     Router.run();
 
-    DoubanBooks.ReqBooksInfo('1873926', 'GetDoubanData');
-    DoubanBooks.ShowBooksInfo();
+    // DoubanBooks.ReqBooksInfo('1873926', 'GetDoubanData');
+    // DoubanBooks.ShowBooksInfo();
 
 });
