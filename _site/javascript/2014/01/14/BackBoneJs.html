@@ -22,8 +22,8 @@
             <button class="site-nav-logo button-transition"><span  title="Site Navigation">W</span></button><!--导航按钮-->
             <div class="site-nav-container">
                 <ul class="site-list-item">
-                    <li><a href="#" class="list-item-btn" id="home">Home</a></li>
-                    <li><a href="#collection" class="list-item-btn" id="collection">Collection</a></li>
+                    <li><a href="/index.html" class="list-item-btn" id="home">Home</a></li>
+                    <li><a href="/index.html#collection" class="list-item-btn" id="collection">Collection</a></li>
                 </ul>
             </div><!--导航内容容器-->
         </nav><!--导航结尾-->
@@ -538,7 +538,13 @@ $(function() {
                 }
             });
         </script>
-        <script type='text/javascript' src="/scripts/main/app.js"></script>
+        <script type='text/javascript'>
+            seajs.use(["module/Drawer.js"], function(Drawer, Router) {
+
+                var d = new Drawer;
+                
+            });
+        </script>
         <!--><![endif]-->
         <!--[if lt ie 8]>
             <div id="update-tip-layer">

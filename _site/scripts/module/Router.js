@@ -5,12 +5,9 @@ define('module/Router', function(require, exports, module) {
     var DoubanBooks = require('module/DoubanBooks');
     var Books = ['4736167', '6038371', '3794471', '10546125',
         '5362856', '11506062', '25767596', '25768396'];
-    var len = Books.length;
     var BooksData = {};
 
-    var Model = Backbone.Model.extend({
-        defualts: {}
-    });
+    var Model = Backbone.Model.extend();
 
     var View = Backbone.View.extend({
         initialize: function() {
