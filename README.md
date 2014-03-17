@@ -1,0 +1,83 @@
+WNLee's Blog
+========
+
+> WNLee's Blog，Write down every little incident in my life.
+
+## 目录
+
+- 前言
+- 开发说明
+- 设计说明
+- 总结
+
+## 前言
+
+WNLee's Blog 顾名思义就是我的个人博客了，建这个博客的原因有三吧！第一，需要一个 blog 来记录下自己生活的方方面面吧；第二，学习了 BackBoneJs 没有实践的机会，在这里尝试用一下；第三，临近‘卖身’，弄个 blog 装下 B。( 明显前两个原因是重点，XDDDDD )
+
+## 开发说明
+
+> 应该说是这个页面的实现亮点吧，这个页面很简单的。主要用到了 BackBoneJs 实现前端 MVC，跨域调用豆瓣 API 获取书籍信息。。。
+
+1. BackBoneJs 实践
+
+    - `Router.js` 文件通过 `BackboneJs` 自身的路由机制来管理 hash 实现页面`Blog List`， `Books List`等模块之间的切换。
+    - `Drawer.js` 文件通过其本身的 `View` 模块实现页面的动态效果。
+    - `模板引擎` 通过定义 HTML 模板实现跨域获取书籍信息后写入页面。
+
+2. 跨域实现 
+    
+    > 实现主要封装在 `DoubanBooks.js` 文件中，在 `Router.js` 中进行了调用，跨域调用豆瓣 API 比较简单，代码如下：
+
+        // 这里有个坎，就是 JSONP 下的回调要求是挂载在全局变量下面的
+        function ReqBooksInfo(bookID, callback) {
+
+            var url = 'https://api.douban.com/v2/book/' + 
+
+                      bookID +
+
+                      '?&apikey=YouerApiKey' + 
+
+                      '&alt=xd&callback=' +
+
+                      callback;
+
+            var script =  document.createElement("script");
+
+            script.src = url;
+
+            script.setAttribute("class", "script_for_douban_books");
+
+            document.body.appendChild(script);
+
+        }
+
+3. SeaJs 
+
+    > 这里对 SeaJs 调用第三方库做了简单处理，而且目录结构做了调整，目录结构如下：
+
+            scripts
+            |——base
+            |    |——sea.js
+            |    |——jquery.js
+            |    |——backbone.js
+            |    |——underscore.js
+            |
+            |——module
+            |    |——Router.js
+            |    |——Drawer.js
+            |    |——DoubanBooks.js
+            |
+            |——main
+            |    |——app.js
+
+4. 其他
+
+    > 其他还在开发中。。。
+
+## 设计说明
+
+> 设计模仿 [medium](https://medium.com)，喜欢她的侧栏。
+
+## 总结
+
+个人学习一样东西之后就会用它做一些作品出来，这个页面的诞生主要是为了实践 BackBoneJs，在使用了 BackBoneJs 之后发现他的 MVC 对代码的可读性和健壮性有很大的帮助，页面开发变得更加方便。但是使用她的时候总有感觉缺少一下方法，不能用得很得心应手，可能是还只处于入门阶段吧。接下来再好好尝试。XDDDDDDD;
