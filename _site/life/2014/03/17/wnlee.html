@@ -1,0 +1,230 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>WNLee 博客介绍</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="/images/bitbug_favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="/styles/reset.min.css">
+        <link type="text/css" rel="stylesheet" href="/styles/markdown.css">
+        <link type="text/css" rel="stylesheet" href="/styles/others.css">
+        <link type="text/css" rel="stylesheet" href="/styles/main.css">
+        <!--[if lt ie 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+    <body>
+        <!--[if gte ie 8]><!-->
+        <!--导航开始-->
+        <nav class="site-nav">
+            <button class="site-nav-logo button-transition"><span  title="Site Navigation">W</span></button><!--导航按钮-->
+            <div class="site-nav-container">
+                <ul class="site-list-item">
+                    <li><a href="/" class="list-item-btn" id="home">Home</a></li>
+                    <li><a href="/#collection" class="list-item-btn" id="collection">Collection</a></li>
+                </ul>
+            </div><!--导航内容容器-->
+        </nav><!--导航结尾-->
+        <!--覆盖层-->
+        <div class="site-nav-overlay"></div><!--覆盖层-->
+        <!--主页面容器-->
+        <div class="container container-transition">
+            <!--主页面-->
+            <div class="surface">
+                <!--主要内容-->
+                <div class="screen-content">
+                    <!--焦点图-->
+                    <div class="image-home-header-bleed">
+                        <div class="images-src" style="background-image: url(/images/header-bg.jpeg)"></div>
+                        <div class="images-src images-src-blur" style="background-image: url(/images/header-bg-shadow.jpeg)"></div> 
+                    </div><!--焦点图-->
+                    <!--滚动页面-->
+                    <div class="srolling-region">
+                        <header class="blog-header">
+                            <h1 class="blog-title">WNLee's Blog</h1>
+                            <p>I'm WeiNanLee, This is my personal blog!</p>
+                            <p class="link-github-con"><a href="https://github.com/Geek-Lee" target="_blank">Link To Github</a></p>
+                        </header>
+                        <nav class="page-nav">
+                            <ul>
+                                <li><a href="/#blogs" id="blogsID" class="hover">Blogs List</a></li>
+                                <li><a href="/#books" id="booksID">Books List</a></li>
+                                <li><a href="/#about" id="aboutID">About Me</a></li>
+                            </ul>
+                        </nav>
+                        <div class="background-white">
+                          <div class="article">
+                            <h2>WNLee 博客介绍</h2>
+                            <p class="post-date">17 Mar 2014</p>
+                            <p>【WNLee 博客介绍】</p>
+
+<h2 id="">摘要</h2>
+
+<blockquote>
+<p>WNLee’s Blog，Write down every little incident in my life.</p>
+</blockquote>
+
+<h2 id="_2">目录</h2>
+
+<ul>
+<li>前言</li>
+
+<li>开发说明</li>
+
+<li>设计说明</li>
+
+<li>总结</li>
+</ul>
+
+<h2 id="_3">前言</h2>
+
+<p>WNLee’s Blog 顾名思义就是我的个人博客了，建这个博客的原因有三吧！第一，需要一个 blog 来记录下自己生活的方方面面吧；第二，学习了 BackBoneJs 没有实践的机会，在这里尝试用一下；第三，临近‘卖身’，弄个 blog 装下 B。( 明显前两个原因是重点，XDDDDD )</p>
+
+<h2 id="_4">开发说明</h2>
+
+<blockquote>
+<p>应该说是这个页面的实现亮点吧，这个页面很简单的。主要用到了 BackBoneJs 实现前端 MVC，跨域调用豆瓣 API 获取书籍信息。。。</p>
+</blockquote>
+
+<ol>
+<li>
+<p>BackBoneJs 实践</p>
+
+<ul>
+<li><code>Router.js</code> 文件通过 <code>BackboneJs</code> 自身的路由机制来管理 hash 实现页面<code>Blog List</code>， <code>Books List</code>等模块之间的切换。</li>
+
+<li><code>Drawer.js</code> 文件通过其本身的 <code>View</code> 模块实现页面的动态效果。</li>
+
+<li><code>模板引擎</code> 通过定义 HTML 模板实现跨域获取书籍信息后写入页面。</li>
+</ul>
+</li>
+
+<li>
+<p>跨域实现</p>
+
+<blockquote>
+<p>实现主要封装在 <code>DoubanBooks.js</code> 文件中，在 <code>Router.js</code> 中进行了调用，跨域调用豆瓣 API 比较简单，代码如下：</p>
+</blockquote>
+
+<pre><code> // 这里有个坎，就是 JSONP 下的回调要求是挂载在全局变量下面的
+ function ReqBooksInfo(bookID, callback) {
+
+     var url = &#39;https://api.douban.com/v2/book/&#39; + 
+
+               bookID +
+
+               &#39;?&amp;apikey=YouerApiKey&#39; + 
+
+               &#39;&amp;alt=xd&amp;callback=&#39; +
+
+               callback;
+
+     var script =  document.createElement(&quot;script&quot;);
+
+     script.src = url;
+
+     script.setAttribute(&quot;class&quot;, &quot;script_for_douban_books&quot;);
+
+     document.body.appendChild(script);
+
+ }</code></pre>
+</li>
+
+<li>
+<p>SeaJs</p>
+
+<blockquote>
+<p>这里对 SeaJs 调用第三方库做了简单处理，而且目录结构做了调整，目录结构如下：</p>
+</blockquote>
+
+<pre><code>     scripts
+     |——base
+     |    |——sea.js
+     |    |——jquery.js
+     |    |——backbone.js
+     |    |——underscore.js
+     |
+     |——module
+     |    |——Router.js
+     |    |——Drawer.js
+     |    |——DoubanBooks.js
+     |
+     |——main
+     |    |——app.js</code></pre>
+</li>
+
+<li>
+<p>其他</p>
+
+<blockquote>
+<p>其他还在开发中。。。</p>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="_5">设计说明</h2>
+
+<blockquote>
+<p>设计模仿 <a href="https://medium.com">medium</a>，喜欢她的侧栏。</p>
+</blockquote>
+
+<h2 id="_6">总结</h2>
+
+<p>个人学习一样东西之后就会用它做一些作品出来，这个页面的诞生主要是为了实践 BackBoneJs，在使用了 BackBoneJs 之后发现他的 MVC 对代码的可读性和健壮性有很大的帮助，页面开发变得更加方便。但是使用她的时候总有感觉缺少一下方法，不能用得很得心应手，可能是还只处于入门阶段吧。接下来再好好尝试。XDDDDDDD;</p>
+
+<p><a href="http://github.wnlee.com">Blog Link</a></p>
+                            <!-- Duoshuo Comment BEGIN -->
+                            <div class="ds-thread"></div>
+                            <script type="text/javascript">
+                            var duoshuoQuery = {short_name:"wnlee"};
+                            (function() {
+                                var ds = document.createElement('script');
+                                ds.type = 'text/javascript';
+                                ds.async = true;
+                                ds.src = 'http://static.duoshuo.com/embed.js';
+                                ds.charset = 'UTF-8';
+                                (document.getElementsByTagName('head')[0] 
+                                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+                            })();
+                            </script>
+                          </div>
+                          <!-- Duoshuo Comment END -->
+                          <footer class="footer"><a href="GeekLee2020@gmail.com" target="_blank">Contact Me</a><a target="_blank" href="http://www.cnblogs.com/geek-lee/">CnBlogs</a><a target="_blank" href="http://weibo.com/17aiba">WeiBo</a></footer>
+                        </div>
+                    </div><!--滚动页面-->
+                </div><!--主要内容-->
+            </div><!--主页面-->
+        </div><!--主页面容器-->
+        <script type='text/javascript' src="/scripts/base/sea.js"></script>
+        <script type='text/javascript'>
+            seajs.config({
+                base: '/scripts/',
+                alias: {
+                    'underscore': 'base/underscore',
+                    '$': 'base/jquery',
+                    'backbone': 'base/backbone'
+                }
+            });
+        </script>
+        <script type='text/javascript'>
+            seajs.use(["module/Drawer.js"], function(Drawer, Router) {
+
+                var d = new Drawer;
+                
+            });
+        </script>
+        <!--><![endif]-->
+        <!--[if lt ie 8]>
+            <div id="update-tip-layer">
+                <div id="update-tip">
+                    <a href="http://www.google.cn/chrome" title="Chrome" id="chrome"></a>
+                    <a href="http://www.apple.com.cn/safari/" title="Safari" id="safari"> </a>
+                    <a href="http://www.firefox.com.cn/download/" title="Firefox" id="firefox"> </a>
+                    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home" title="IE 10" id="ie"></a>
+                </div>
+            </div>
+        <![endif]-->
+    </body>
+</html>

@@ -57,13 +57,21 @@ define('module/Router', function(require, exports, module) {
     });
 
     exports.run = function() {
+        var count = 0;
         window.GetDoubanData = function (data) {
             BooksData[data.id] = data;
             m.set(BooksData[data.id]);
+            count--;
+            console.log('count1:' + count);
+            if (count == 0) {
+                DoubanBooks.removeScript("script_for_douban_books");
+            }
         };
         inner(Books);
         function inner(arry) {
             DoubanBooks.ReqBooksInfo(arry.shift(), 'GetDoubanData');
+            count++;
+            console.log('count2:' + count);
             arry.length && inner(arry);
         };
         var m = new Model;
