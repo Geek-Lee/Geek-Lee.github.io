@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<img src="images/rock.jpg" / >
+					<h3>Rock's 面筋</h3>
+				</section>
+				<section>
+					<h3>自我介绍</h3>
+					<ol>
+						<li class="fragment" data-fragment-index="1">大三前端组</li>
+						<li class="fragment" data-fragment-index="2">拖延症患者</li>
+						<li class="fragment" data-fragment-index="3">极端分子</li>
+					</ol>
+				</section>
+				<section>
+					<section>
+						<img src="images/download.jpg" />
+						<h3>面筋是啥</h3>
+					</section>
+					<section>
+						<h3>信息可以吃么？</h3>
+					</section>
+					<section>
+						<img width="40%" height="40%" src="images/wine.jpg" />
+						<h3>你买单，我就来！</h3>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>技术 & 项目</h2>
+					</section>
+					<section data-state="something">
+						<h3>CSS 考察</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="1">页面布局</li>
+							<li class="fragment" data-fragment-index="2">图片处理</li>
+							<li class="fragment" data-fragment-index="3">字体处理/icon</li>
+							<li class="fragment" data-fragment-index="3">性能优化</li>
+						</ul>
+					</section>
+					<section data-state="blackout">
+						<h3>Js 考察</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="1">Js 基础</li>
+							<li class="fragment" data-fragment-index="2">模块化</li>
+							<li class="fragment" data-fragment-index="3">设计模式</li>
+							<li class="fragment" data-fragment-index="4">面向对象</li>
+							<li class="fragment" data-fragment-index="5">库 & 框架</li>
+							<li class="fragment" data-fragment-index="6">性能优化</li>
+						</ul>
+					</section>
+					<section data-state="soothe">
+						<h3>项目</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="1">项目分工</li>
+							<li class="fragment" data-fragment-index="2">WorkFlow</li>
+							<li class="fragment" data-fragment-index="3">MVC</li>
+							<li class="fragment" data-fragment-index="4">MVVM</li>
+						</ul>
+					</section>
+					<section>
+						<h3>其他</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="1">Canvas</li>
+							<li class="fragment" data-fragment-index="2">WebApp</li>
+							<li class="fragment" data-fragment-index="3">浏览器工作原理</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>交际 & 定位</h2>
+					</section>
+					<section>
+						<h3>交际</h3>
+					</section>
+					<section>
+						<h3>定位</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="1">职位定位</li>
+							<li class="fragment" data-fragment-index="2">团队定位</li>
+							<li class="fragment" data-fragment-index="3">人生规划</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>视野 & 不设限</h2>
+					</section>
+					<section>
+						<h3>视野</h3>
+					</section>
+					<section>
+						<h3>不设限</h3>
+					</section>
+				</section>
+				<section>
+					<h1>Q & A</h1>
+				</section>
+				<section>
+					<h1>The End</h1>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'circle', // default/cube/page/concave/zoom/linear/fade/circle/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
