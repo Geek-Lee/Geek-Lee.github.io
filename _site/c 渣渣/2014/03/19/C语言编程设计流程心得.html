@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>WNLee 博客介绍</title>
+        <title>C 语言编程流程心得</title>
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" href="/images/bitbug_favicon.ico" />
         <link type="text/css" rel="stylesheet" href="/styles/reset.min.css">
@@ -63,119 +63,111 @@
                         </nav>
                         <div class="background-white">
                           <div class="article">
-                            <h2>WNLee 博客介绍</h2>
-                            <p class="post-date">17 Mar 2014</p>
-                            <p>【WNLee 博客介绍】</p>
+                            <h2>C 语言编程流程心得</h2>
+                            <p class="post-date">19 Mar 2014</p>
+                            <p>【C 语言编程流程心得】</p>
 
 <h2 id="section">摘要</h2>
 
 <blockquote>
-  <p>WNLee’s Blog，Write down every little incident in my life.</p>
+  <p>很少用 C语言 写东西，但是代码这东西是需要一定的代码量来修炼的，一步一个脚印，练得多代码才能写得好！这是写了三个操作系统实验小程序之后做的总结。</p>
 </blockquote>
 
 <h2 id="section-1">目录</h2>
 
 <ul>
-  <li>前言</li>
-  <li>开发说明</li>
-  <li>设计说明</li>
+  <li>摘要</li>
+  <li>目录</li>
+  <li>撰文缘由</li>
+  <li>开发流程</li>
   <li>总结</li>
 </ul>
 
-<h2 id="section-2">前言</h2>
-
-<p>WNLee’s Blog 顾名思义就是我的个人博客了，建这个博客的原因有三吧！第一，需要一个 blog 来记录下自己生活的方方面面吧；第二，学习了 BackBoneJs 没有实践的机会，在这里尝试用一下；第三，临近‘卖身’，弄个 blog 装下 B。( 明显前两个原因是重点，XDDDDD )</p>
-
-<h2 id="section-3">开发说明</h2>
-
-<blockquote>
-  <p>应该说是这个页面的实现亮点吧，这个页面很简单的。主要用到了 BackBoneJs 实现前端 MVC，跨域调用豆瓣 API 获取书籍信息。。。</p>
-</blockquote>
-
+<h2 id="section-2">撰文缘由</h2>
 <ol>
   <li>
-    <p>BackBoneJs 实践</p>
-
-    <ul>
-      <li><code>Router.js</code> 文件通过 <code>BackboneJs</code> 自身的路由机制来管理 hash 实现页面<code>Blog List</code>， <code>Books List</code>等模块之间的切换。</li>
-      <li><code>Drawer.js</code> 文件通过其本身的 <code>View</code> 模块实现页面的动态效果。</li>
-      <li><code>模板引擎</code> 通过定义 HTML 模板实现跨域获取书籍信息后写入页面。</li>
-    </ul>
+    <p>原因其实很简单，就是我最近一直在忙着学自己想学的，做自己的事情，很多都是新的尝试。学校老师你突然就搞了那么多的作业啊、实验报告啊、课程设计啊、一堆一堆的一坨一坨的。直接打乱了我的进度有木有啊？直接乱了我的节奏有木有啊？本来这个星期可以再在 github 上面弄个大大的深绿色方块的，就让你这样扼杀了，所以要写篇文章来补偿一下。</p>
   </li>
   <li>
-    <p>跨域实现 </p>
-
-    <blockquote>
-      <p>实现主要封装在 <code>DoubanBooks.js</code> 文件中，在 <code>Router.js</code> 中进行了调用，跨域调用豆瓣 API 比较简单，代码如下：</p>
-    </blockquote>
-
-    <pre><code> // 这里有个坎，就是 JSONP 下的回调要求是挂载在全局变量下面的
- function ReqBooksInfo(bookID, callback) {
-
-     var url = 'https://api.douban.com/v2/book/' + 
-
-               bookID +
-
-               '?&amp;apikey=YouerApiKey' + 
-
-               '&amp;alt=xd&amp;callback=' +
-
-               callback;
-
-     var script =  document.createElement("script");
-
-     script.src = url;
-
-     script.setAttribute("class", "script_for_douban_books");
-
-     document.body.appendChild(script);
-
- }
-</code></pre>
+    <p>同学间网上拷贝代码应付作业的现象，首先我不说这样好还是不好。因为每个人的情况不一样。但是如果网上参考代码了，CV 下来又花了一天才把程序搞定我就觉得不值了。然后想下原因，因为这个问题我也遇到过。我总结一下就是缺乏一个对程序全面的思考，流程设计。借鉴代码变成帮别人调Bugger。部分人没怎么考虑就直接打开编译然后就开始写，这样效率很低。还有就是说自己算法差不知从何下手，我的观点是我们现在接触的作业啊，数据结构啊需要算法么？我觉得画个流程图，明白需要实现什么功能，然后连接起来就可以了。主要是缺乏思考，所以我要发表下我的观点。</p>
   </li>
   <li>
-    <p>SeaJs </p>
-
-    <blockquote>
-      <p>这里对 SeaJs 调用第三方库做了简单处理，而且目录结构做了调整，目录结构如下：</p>
-    </blockquote>
-
-    <pre><code>     scripts
-     |——base
-     |    |——sea.js
-     |    |——jquery.js
-     |    |——backbone.js
-     |    |——underscore.js
-     |
-     |——module
-     |    |——Router.js
-     |    |——Drawer.js
-     |    |——DoubanBooks.js
-     |
-     |——main
-     |    |——app.js
-</code></pre>
+    <p>这个原因最无耻了，小弟我花了几个小时写了个程序交给老师，别人上网’参考’一下也发了个作业给老师。我觉得自己有点吃亏啊！所以我要吐槽。</p>
   </li>
   <li>
-    <p>其他</p>
-
-    <blockquote>
-      <p>其他还在开发中。。。</p>
-    </blockquote>
+    <p>这才是真正的原因，哈哈，上面纯属吐槽！我只是想写下自己写一个 C 语言程序的流程，哪天不小心迷茫了，看一下，就知道要怎么写 C语言小程序了。</p>
   </li>
 </ol>
 
-<h2 id="section-4">设计说明</h2>
+<h2 id="section-3">开发流程</h2>
 
-<blockquote>
-  <p>设计模仿 <a href="https://medium.com">medium</a>，喜欢她的侧栏。</p>
-</blockquote>
+<h5 id="section-4">【第一步】程序要求</h5>
 
-<h2 id="section-5">总结</h2>
+<p>比如我的作用是做一个单道处理系统的作业等待模拟程序，要求如下：</p>
 
-<p>个人学习一样东西之后就会用它做一些作品出来，这个页面的诞生主要是为了实践 BackBoneJs，在使用了 BackBoneJs 之后发现他的 MVC 对代码的可读性和健壮性有很大的帮助，页面开发变得更加方便。但是使用她的时候总有感觉缺少一下方法，不能用得很得心应手，可能是还只处于入门阶段吧。接下来再好好尝试。XDDDDDDD;</p>
+<ol>
+  <li>首先是单道处理系统，就是说单进程的，不需要考虑多进程的情况；</li>
+  <li>需要分别模拟 先到先服务调度算法(FCFS) 和 响应比高优先调度算法(HRN)；</li>
+  <li>控制块统一命名 JCB，大概需要包含的信息(可以用来设计结构体)；</li>
+  <li>模拟过程中需要输出 周转时间、带权周转时间、平均周转时间和平均带权周转时间；</li>
+</ol>
 
-<p><a href="http://github.wnlee.com">Blog Link</a></p>
+<h5 id="section-5">【第二步】知识储备</h5>
+
+<ul>
+  <li>至少要知道什么是 FCFS 和 HRN 算法吧！</li>
+  <li>响应比(Rp) = （等待时间+要求服务时间）/（要求服务时间）；</li>
+  <li>周转时间 = 完成时间 - 到达时间 = 等待时间 + 服务时间；</li>
+  <li>带权周转时间 = 周转时间/服务时间；</li>
+</ul>
+
+<h5 id="section-6">【第三步】程序构思</h5>
+
+<ul>
+  <li>选择要测试的调度算法的类型，选择后对应进行测试</li>
+  <li>程序需要数据，所以需要用户输入的过程</li>
+  <li>输入结束，我要存储未到达进程、就绪进程、运行进程、完成进程</li>
+  <li>存储时，我需要按进程的到达时间来进行筛选</li>
+  <li>存储到就绪进程的需要按算法类型来排序</li>
+  <li>运行进程每次都调用就绪进程首位的进程来运行</li>
+  <li>运行过程中未到达的进程会到达，我需要计算到达时间</li>
+  <li>程序要求记录进程完成时间需要设置 timer</li>
+  <li>程序要求输出的结果需要另外存储完成的进程</li>
+  <li>所有进程完成后需要计算结果</li>
+  <li>结果得出后需要输出</li>
+</ul>
+
+<h5 id="section-7">【第四步】程序框图</h5>
+
+<p><img src="/images/c.jpg" alt="程序框图" /></p>
+
+<h5 id="section-8">【第五步】准备工作</h5>
+
+<ol>
+  <li>选择需要的预编译头文件；</li>
+  <li>选择数据结构，还有相关操作，这里我选择链表；</li>
+  <li>设计结构体，我为了方便插入删除增加了指向前面元素的指针；</li>
+  <li>设计功能块，可以按函数来分，函数间互相依赖；</li>
+  <li>按功能模块为函数分类，比如：功能函数我加上前缀 ‘md_ ‘、输出是’pf_ ‘、链表操作是’lt_‘；</li>
+</ol>
+
+<p>大概就是这些，缺的欢迎补充……</p>
+
+<h5 id="section-9">【第六步】编写程序</h5>
+
+<p>这个怎么写呢？！每个人都有自己的编程习惯，编译器也有不同。但是，大部分人都会按模块来写吧！我个人比较喜欢先写输入输出，数据结构这两块。写输入输出再来添加逻辑模块方便调试，数据结果模块比较固定，而且是其他模块的依赖。</p>
+
+<p>这一部分就略过，以后有心得再补充。。。</p>
+
+<h5 id="section-10">【第七步】测试和优化</h5>
+
+<p>【测试】也可以叫做 debugger 吧？多输入几组数据来看有木有 BUG！</p>
+
+<p>【优化】主要讲下代码优化，包括代码风格、变量命名、功能块合并等等！</p>
+
+<h2 id="section-11">总结</h2>
+
+<p>理清思路来写代码的话，比上网拷贝抄袭好很多的，这样子思路清晰不用帮别人debugger。添加、删减功能思路也会很清晰。至少不会因为代码不是自己的而手足无措。还能锻炼自己的思维啊、编程能力啊。。。以上就是个人的一些心得希望读者喜欢，XDXDXD。。。</p>
 
                             <!-- Duoshuo Comment BEGIN -->
                             <div class="ds-thread"></div>

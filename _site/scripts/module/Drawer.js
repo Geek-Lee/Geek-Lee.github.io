@@ -2,12 +2,14 @@ define('module/Drawer', function(require, exports, module) {
 
     var $ = require('$');
     var Backbone = require('backbone');
+    var navSh = false;
 
     var Drawer = Backbone.View.extend({
         el: 'body',
         events: {
             'click .site-nav-logo': 'open',
             'click .site-nav-overlay': 'close',
+            'click .m-site-nav-logo-btn': 'navShow',
             'click #home': 'close',
             'click #collection': 'close'
         },
@@ -33,6 +35,15 @@ define('module/Drawer', function(require, exports, module) {
                 iT = $('.srolling-region').scrollTop(),
                 a = iT*3 / iH;
             $('.images-src-blur').css({'opacity': a < 1 ? a: 1});
+        },
+        navShow: function() {
+            if (navSh) {
+                $('.site-nav').removeClass('m-site-nav-show');
+                navSh = false;
+            } else {
+                $('.site-nav').addClass('m-site-nav-show');
+                navSh = true;
+            }
         }
     });
 
