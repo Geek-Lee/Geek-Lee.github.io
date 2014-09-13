@@ -459,7 +459,7 @@ body,
   .surface .screen-content .srolling-region .aboutme-container .photo-container {
     float: none;
     margin: 0 auto;
-    min-width: 72%;
+    /*min-width: 72%;*/
     height: auto;
   }
   .surface .screen-content .srolling-region .aboutme-container .my-info {
