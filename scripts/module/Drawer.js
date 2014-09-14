@@ -39,7 +39,7 @@ define('module/Drawer', function(require, exports, module) {
             $('.images-src-blur').css({'opacity': a < 1 ? a: 1});
         },
         navShow: function() {
-            var $elem = $('m-site-nav-show');
+            var $elem = $('site-nav');
             if ($elem.hasClass('m-site-nav-show')) {
                 $elem.removeClass('m-site-nav-show');
             } else {
