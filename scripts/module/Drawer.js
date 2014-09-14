@@ -8,10 +8,9 @@ define('module/Drawer', function(require, exports, module) {
         el: 'body',
         events: {
             'click .site-nav-logo': 'open',
+            'click .list-item-btn': 'close',
             'click .site-nav-overlay': 'close',
-            'click .m-site-nav-logo-btn': 'navShow',
-            'click #home': 'close',
-            'click #collection': 'close'
+            'click .m-site-nav-logo-btn': 'navShow'
         },
         initialize: function() {
             $('.srolling-region').scroll(this.scrolling);
