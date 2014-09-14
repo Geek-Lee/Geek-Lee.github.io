@@ -24,7 +24,11 @@ define('module/Drawer', function(require, exports, module) {
         },
         close: function() {
             var me = this;
+            var $elem = $('.site-nav');
             me.$el.removeClass('site-nav-transition');
+            if ($elem.hasClass('m-site-nav-show')) {
+                $('.site-nav').removeClass('m-site-nav-show');
+            }
             setTimeout(function() {
                 me.$el.removeClass('site-nav-drawer-open');
             }, 200);
