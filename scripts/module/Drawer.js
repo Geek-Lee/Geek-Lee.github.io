@@ -9,6 +9,7 @@ define('module/Drawer', function(require, exports, module) {
             'click .site-nav-logo': 'open',
             'click .list-item-btn': 'close',
             'click .site-nav-overlay': 'close',
+            'touchstart .site-nav-overlay': 'close',
             'click .m-site-nav-logo-btn': 'navShow'
         },
         initialize: function() {
