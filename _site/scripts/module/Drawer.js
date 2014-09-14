@@ -2,16 +2,14 @@ define('module/Drawer', function(require, exports, module) {
 
     var $ = require('$');
     var Backbone = require('backbone');
-    var navSh = false;
 
     var Drawer = Backbone.View.extend({
         el: 'body',
         events: {
             'click .site-nav-logo': 'open',
+            'click .list-item-btn': 'close',
             'click .site-nav-overlay': 'close',
-            'click .m-site-nav-logo-btn': 'navShow',
-            'click #home': 'close',
-            'click #collection': 'close'
+            'click .m-site-nav-logo-btn': 'navShow'
         },
         initialize: function() {
             $('.srolling-region').scroll(this.scrolling);
@@ -25,7 +23,11 @@ define('module/Drawer', function(require, exports, module) {
         },
         close: function() {
             var me = this;
+            var $elem = $('.site-nav');
             me.$el.removeClass('site-nav-transition');
+            if ($elem.hasClass('m-site-nav-show')) {
+                $('.site-nav').removeClass('m-site-nav-show');
+            }
             setTimeout(function() {
                 me.$el.removeClass('site-nav-drawer-open');
             }, 200);
@@ -37,12 +39,11 @@ define('module/Drawer', function(require, exports, module) {
             $('.images-src-blur').css({'opacity': a < 1 ? a: 1});
         },
         navShow: function() {
-            if (navSh) {
-                $('.site-nav').removeClass('m-site-nav-show');
-                navSh = false;
+            var $elem = $('.site-nav');
+            if ($elem.hasClass('m-site-nav-show')) {
+                $elem.removeClass('m-site-nav-show');
             } else {
-                $('.site-nav').addClass('m-site-nav-show');
-                navSh = true;
+                $elem.addClass('m-site-nav-show');
             }
         }
     });
