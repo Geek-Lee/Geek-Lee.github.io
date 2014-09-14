@@ -2,7 +2,6 @@ define('module/Drawer', function(require, exports, module) {
 
     var $ = require('$');
     var Backbone = require('backbone');
-    var navSh = false;
 
     var Drawer = Backbone.View.extend({
         el: 'body',
@@ -40,7 +39,8 @@ define('module/Drawer', function(require, exports, module) {
             $('.images-src-blur').css({'opacity': a < 1 ? a: 1});
         },
         navShow: function() {
-            if (navSh) {
+            var $elem = $('m-site-nav-show');
+            if ($elem.hasClass('m-site-nav-show')) {
                 $('.site-nav').removeClass('m-site-nav-show');
                 navSh = false;
             } else {
