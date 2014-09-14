@@ -480,6 +480,9 @@ body,
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  .site-nav-overlay {
+    display: none;
+  }
   .m-site-nav-show {
     height: 220px;
   }
