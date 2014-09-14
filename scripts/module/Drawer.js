@@ -41,11 +41,9 @@ define('module/Drawer', function(require, exports, module) {
         navShow: function() {
             var $elem = $('m-site-nav-show');
             if ($elem.hasClass('m-site-nav-show')) {
-                $('.site-nav').removeClass('m-site-nav-show');
-                navSh = false;
+                $elem.removeClass('m-site-nav-show');
             } else {
-                $('.site-nav').addClass('m-site-nav-show');
-                navSh = true;
+                $elem.addClass('m-site-nav-show');
             }
         }
     });
